@@ -93,9 +93,16 @@ main .top .top-logo h1 {
   font-weight: 600;
   font-size: 95pt;
   font-style: normal;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: paragraphEntrance 1s ease-out forwards;
+  animation-delay: 1.5s;
 }
 main .top .top-logo div p {
   font-family: "Manjari";
+  opacity: 0;
+  animation: paragraphEntrance 1s ease-out forwards;
+  animation-delay: 2s;
 }
 main .top .top-hero {
   display: flex;
@@ -118,7 +125,10 @@ main .top .top-hero .top-hero-card {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   position: absolute;
-  top: 1%;
+  opacity: 0;
+  transform: translateY(40%);
+  animation: top-hero-animation 1.5s ease-out forwards;
+  animation-delay: 2s;
 }
 main .top .top-hero .top-hero-card .card-main {
   width: 100%;
@@ -163,7 +173,6 @@ main .top .top-hero .top-hero-card .card-main {
   width: 90%;
   height: 40px;
   background: white;
-  outline: solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,5 +320,25 @@ footer {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes paragraphEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes top-hero-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }/*# sourceMappingURL=style.css.map */
