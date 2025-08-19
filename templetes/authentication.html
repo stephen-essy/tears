@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Manjari:wght@100;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/app/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script src="/static/app/node_modules/jquery/dist/jquery.js"></script>
+    <title>adonis | authentication</title>
+</head>
+
+<body>
+    <nav class="wrapper-header-nav">
+        <section class="header-nav-logo">adonis</section>
+        <section class="header-nav-button">
+            <button>
+                <span><a href="/index.html">home</a></span>
+                <i class="fa-solid fa-house"></i>
+            </button>
+        </section>
+    </nav>
+    <main class="wrapper-main authentication">
+        <h3></h3>
+        <section class="authentication login">
+            <form action="" name="login-form" class="wrapper-main-form sign-in" id="login-panel">
+                <h1>Login</h1>
+                <div class="user-email">
+                    <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                    <input type="text" name="email" id="email" placeholder="email">
+                </div>
+                <div class="passcode">
+                    <label for="password"><i class="fa-solid fa-lock"></i></label>
+                    <input type="password" name="password" class="password" placeholder="password" id="passcode">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="login-form-navigation">
+                    <button id="login-form-btn">
+                        <span>Login</span>
+                        <span class="spinner">
+                        </span>
+                    </button>
+                    <aside>
+                        <a href="" id="navigate-register">create account</a>
+                        |
+                        <a href="" id="navigate-recover-password">Forgot password ?</a>
+                    </aside>
+                </div>
+                <span class="alert">
+                    alert
+                </span>
+            </form>
+            <form action="" class="wrapper-main-form sign-up" id="registration-panel">
+                <h1>Register</h1>
+                <div>
+                    <label for="name"><i class="fa-regular fa-user"></i></label>
+                    <input type="text" name="name" id="user-name" placeholder="user name">
+                </div>
+                <div>
+                    <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                    <input type="email" name="email" id="user-email" placeholder="email">
+                </div>
+                <div>
+                    <label for="user-password"><i class="fa-solid fa-lock"></i></label>
+                    <input type="password" name="user-password" id="user-password" placeholder="password">
+                </div>
+                <div class="login-form-navigation">
+                    <button class="navigation-button-register" id="button-get-registered">
+                        <span>Register</span>
+                        <span class="spinner" id="reg"></span>
+                    </button>
+                    <aside>
+                        <button id="navigate-login">Registered</button>
+                        |
+                        <a href="">who are we?</a>
+                    </aside>
+                </div>
+            </form>
+            <form action="" class="wrapper-main-form  recover-email" id="recover-email-panel">
+                <h1>Forget password</h1>
+                <div>
+                    <label for="lazy-email"><i class="fa-solid fa-envelope"></i></label>
+                    <input type="email" name="lazy-email" id="lazy-email" placeholder="email">
+                </div>
+                <div>
+                    <label for="lazy-code"><i class="fa-solid fa-user-shield"></i></label>
+                    <input type="text" name="lazy-code" id="lazy-code" placeholder="code">
+                </div>
+                <div class="login-form-navigation">
+                    <button id="form-request-password">Request Email</button>
+                    <aside>
+                        <a href="">back to login</a>
+                    </aside>
+                </div>
+            </form>
+        </section>
+        
+    </main>
+
+    <script>
+        $(document).ready(() => {
+            let isPasswordVisible = false;
+            $(".fa-eye").on('click', () => {
+                isPasswordVisible = !isPasswordVisible;
+                let passwordInput = document.getElementById("passcode");
+                if (isPasswordVisible) {
+                    $(".fa-eye").removeClass("fa-eye").addClass("fa-eye-slash");
+                    passwordInput.type = 'text';
+                } else {
+                    $(".fa-eye-slash").removeClass("fa-eye-slash").addClass("fa-eye");
+                    passwordInput.type = 'password';
+                }
+            })
+
+            $('#navigate-login').on('click', (e) => {
+                e.preventDefault();
+                $('.sign-in').css({
+                    display: "flex"
+                })
+                $('.sign-up').css({
+                    display: 'none'
+                })
+
+            })
+
+            $('#navigate-register').on('click', (e) => {
+                e.preventDefault();
+                $('.sign-up').css({
+                    display: "flex"
+                })
+                $('.sign-in').css({
+                    display: 'none'
+                })
+            })
+
+            $('#navigate-recover-password').on('click', (e) => {
+                e.preventDefault();
+                $('.sign-in').css({
+                    display: "none"
+                })
+                $('.recover-email').css({
+                    display: "flex",
+                    transform: "translateX(0%)",
+                    opacity: "1",
+                    transition: "opacity 0.5s ease-in-out,transform 0.5s ease-in-out"
+                })
+            })
+        })
+    </script>
+    <script type="module" src="/static/app/authentication.js"></script>
+</body>
+
+</html>

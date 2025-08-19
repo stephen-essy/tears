@@ -1,0 +1,322 @@
+@use 'global';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'poppins';
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: global.$primary-white-pure-color;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+nav {
+    @include global.back-dropped-nav;
+
+}
+
+button {
+    @include global.button;
+    gap: 10px;
+
+    span {
+        a {
+            color: white;
+        }
+    }
+
+}
+
+.wrapper-header-nav {
+    display: flex;
+
+    section {
+        background: rgb(237, 237, 237, .1);
+        width: 50%;
+        height: 100%;
+        @include global.center-object;
+    }
+
+    .header-nav-logo {
+        font-family: global.$font-logo;
+        position: relative;
+    }
+
+    .header-nav-button {
+        justify-content: right;
+
+        button {
+            position: relative;
+            right: 5%;
+        }
+    }
+}
+
+main {
+    position: relative;
+    padding-top: 10vh;
+
+    section {
+        position: relative;
+        height: 100vh;
+        padding-top: 10vh;
+    }
+
+    .top {
+        padding-top: 0vh;
+
+        section {
+            width: 100%;
+            height: 50%;
+        }
+
+        .top-logo {
+            padding-left: 40pt;
+            align-content: center;
+
+            h1 {
+                font-family: global.$font-logo;
+                font-weight: 600;
+                font-size: 95pt;
+                font-style: normal;
+            }
+
+            div {
+                p {
+                    font-family: 'Manjari';
+                }
+            }
+        }
+
+        .top-hero {
+            @include global.center-object;
+            font-family: 'poppins';
+            .top-hero-card {
+                @include global.center-object;
+                background: rgb(241, 241, 241);
+                width: 90%;
+                height: 550px;
+                border-radius: 15px;
+                background: url(/static/resources/helping-hands.jpg);
+                background-position: center;
+                background-repeat: repeat;
+                background-size: cover;
+                backdrop-filter: blur(10px);
+                position: absolute;
+                top: 1%;
+
+                .card-main {
+                    width: 100%;
+                    height: 100%;
+                    background: rgb(237, 237, 237, .1);
+                    backdrop-filter: blur(10px);
+                    color: white;
+                    border-radius: 15px;
+                    @include global.center-object;
+                }
+            }
+        }
+    }
+
+}
+
+.authentication {
+    margin: 0;
+    padding: 0%;
+    @include global.center-object;
+
+    .login {
+        h1 {
+            color: white;
+            font-family: 'poppins';
+            position: relative;
+            bottom: 10%;
+        }
+
+        .wrapper-main-form {
+            background: rgba(17, 24, 39, 1);
+            height: 400px;
+            width: 350px;
+            border-radius: 5px;
+            @include global.center-object;
+            flex-direction: column;
+            gap: 10pt;
+            position: relative;
+            bottom: 5%;
+
+            div {
+                width: 90%;
+                height: 40px;
+                background: white;
+                outline: solid black;
+                @include global.center-object;
+                border-radius: 15px;
+                position: relative;
+                bottom: 5%;
+
+                input {
+                    width: 85%;
+                    height: 100%;
+                    background: white;
+                    outline: none;
+                    border: none;
+                    font-family: 'poppins';
+                    border-radius: 15px;
+                }
+
+                label {
+                    width: 15%;
+                    @include global.center-object;
+                }
+            }
+
+            article {
+                position: relative;
+                bottom: 5%;
+                width: 85%;
+                display: flex;
+                align-items: right;
+                justify-content: right;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    font-family: 'poppins';
+                    font-weight: 100;
+                    font-size: 10pt;
+                    transition: ease 0.5s linear;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+
+
+
+            }
+
+            .passcode {
+                input {
+                    width: 80%;
+                }
+
+                i {
+                    width: 10%;
+                    @include global.center-object
+                }
+            }
+
+            .login-form-navigation {
+                position: relative;
+                top: -10px;
+                outline: none;
+                display: flex;
+                flex-direction: column;
+                background: none;
+
+                button {
+                    border-radius: 0.378rem;
+                    width: 65%;
+
+                    .loader {
+                        position: relative;
+                        left: 30%;
+                        display: none;
+
+                        i {
+                            display: flex;
+                        }
+                    }
+
+                    .spinner {
+                        border: 2px solid white;
+                        border-top: 2px solid transparent;
+                        border-radius: 50%;
+                        width: 16px;
+                        height: 16px;
+                        animation: spin 1s linear infinite;
+                        position: relative;
+                        left: 35%;
+                        display: none;
+                    }
+
+                }
+
+                aside {
+                    position: relative;
+                    top: 5px;
+                    left: 2%;
+                    @include global.center-object;
+                    gap: 10pt;
+                    font-family: 'Quicksand';
+                    color: white;
+
+                    button{
+                        outline: none;
+                        background: none;
+                        color: white;
+                        height: fit-content;
+                        width: fit-content;
+                        margin: 0;
+                        padding: 0;
+                        font-weight: 100;
+                        font-family: 'Quicksand';
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 100;
+                        font-size: 10pt;
+                    }
+                }
+            }
+
+        }
+        .sign-up{
+            display: none;
+        }
+        .recover-email{
+            position: relative;
+            transform: translateX(5%);
+            opacity: 0;
+            display: none;
+            transition: opacity 0.5s ease-in-out,transform 0.5s ease-in-out;
+        }
+        .alert {
+            color: white;
+            width: 75%;
+            height: 35px;
+            @include global.center-object;
+            text-align: center;
+            background: green;
+            border-radius: 5px;
+            display: none;
+        }
+    }
+
+}
+
+
+footer {
+    min-height: 100%;
+    @include global.center-object;
+    font-family: 'poppins';
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

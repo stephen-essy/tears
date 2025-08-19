@@ -1,0 +1,315 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "poppins";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+nav {
+  min-width: 100%;
+  min-height: 10vh;
+  height: 10vh;
+  background: rgba(237, 237, 237, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: fixed;
+  z-index: 1;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px 10px 25px;
+  background: #4CAF50;
+  color: #F0EFE7;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-family: "poppins";
+  cursor: pointer;
+  gap: 10px;
+}
+button span a {
+  color: white;
+}
+
+.wrapper-header-nav {
+  display: flex;
+}
+.wrapper-header-nav section {
+  background: rgba(237, 237, 237, 0.1);
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-header-nav .header-nav-logo {
+  font-family: "cal sans";
+  position: relative;
+}
+.wrapper-header-nav .header-nav-button {
+  justify-content: right;
+}
+.wrapper-header-nav .header-nav-button button {
+  position: relative;
+  right: 5%;
+}
+
+main {
+  position: relative;
+  padding-top: 10vh;
+}
+main section {
+  position: relative;
+  height: 100vh;
+  padding-top: 10vh;
+}
+main .top {
+  padding-top: 0vh;
+}
+main .top section {
+  width: 100%;
+  height: 50%;
+}
+main .top .top-logo {
+  padding-left: 40pt;
+  align-content: center;
+}
+main .top .top-logo h1 {
+  font-family: "cal sans";
+  font-weight: 600;
+  font-size: 95pt;
+  font-style: normal;
+}
+main .top .top-logo div p {
+  font-family: "Manjari";
+}
+main .top .top-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "poppins";
+}
+main .top .top-hero .top-hero-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(241, 241, 241);
+  width: 90%;
+  height: 550px;
+  border-radius: 15px;
+  background: url(/static/resources/helping-hands.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  top: 1%;
+}
+main .top .top-hero .top-hero-card .card-main {
+  width: 100%;
+  height: 100%;
+  background: rgba(237, 237, 237, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authentication {
+  margin: 0;
+  padding: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.authentication .login h1 {
+  color: white;
+  font-family: "poppins";
+  position: relative;
+  bottom: 10%;
+}
+.authentication .login .wrapper-main-form {
+  background: rgb(17, 24, 39);
+  height: 400px;
+  width: 350px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10pt;
+  position: relative;
+  bottom: 5%;
+}
+.authentication .login .wrapper-main-form div {
+  width: 90%;
+  height: 40px;
+  background: white;
+  outline: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  position: relative;
+  bottom: 5%;
+}
+.authentication .login .wrapper-main-form div input {
+  width: 85%;
+  height: 100%;
+  background: white;
+  outline: none;
+  border: none;
+  font-family: "poppins";
+  border-radius: 15px;
+}
+.authentication .login .wrapper-main-form div label {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.authentication .login .wrapper-main-form article {
+  position: relative;
+  bottom: 5%;
+  width: 85%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+.authentication .login .wrapper-main-form article a {
+  color: white;
+  text-decoration: none;
+  font-family: "poppins";
+  font-weight: 100;
+  font-size: 10pt;
+  transition: ease 0.5s linear;
+}
+.authentication .login .wrapper-main-form article a:hover {
+  text-decoration: underline;
+}
+.authentication .login .wrapper-main-form .passcode input {
+  width: 80%;
+}
+.authentication .login .wrapper-main-form .passcode i {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.authentication .login .wrapper-main-form .login-form-navigation {
+  position: relative;
+  top: -10px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  background: none;
+}
+.authentication .login .wrapper-main-form .login-form-navigation button {
+  border-radius: 0.378rem;
+  width: 65%;
+}
+.authentication .login .wrapper-main-form .login-form-navigation button .loader {
+  position: relative;
+  left: 30%;
+  display: none;
+}
+.authentication .login .wrapper-main-form .login-form-navigation button .loader i {
+  display: flex;
+}
+.authentication .login .wrapper-main-form .login-form-navigation button .spinner {
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  position: relative;
+  left: 35%;
+  display: none;
+}
+.authentication .login .wrapper-main-form .login-form-navigation aside {
+  position: relative;
+  top: 5px;
+  left: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10pt;
+  font-family: "Quicksand";
+  color: white;
+}
+.authentication .login .wrapper-main-form .login-form-navigation aside button {
+  outline: none;
+  background: none;
+  color: white;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+  font-family: "Quicksand";
+}
+.authentication .login .wrapper-main-form .login-form-navigation aside a {
+  color: white;
+  font-weight: 100;
+  font-size: 10pt;
+}
+.authentication .login .sign-up {
+  display: none;
+}
+.authentication .login .recover-email {
+  position: relative;
+  transform: translateX(5%);
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.authentication .login .alert {
+  color: white;
+  width: 75%;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: green;
+  border-radius: 5px;
+  display: none;
+}
+
+footer {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "poppins";
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=style.css.map */
