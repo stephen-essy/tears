@@ -1,5 +1,4 @@
 
-
 export const AuthStorage={
   save:(data)=>{
     const authData={
@@ -192,6 +191,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
 
     try{
+      let spinner=document.getElementById("login-spinner");
+      spinner.style.display="flex";
       let request= await fetch("http://172.16.17.113:8080/laughter/user/login",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
@@ -200,6 +201,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
       let response = await request.json();
       if(request.ok){
+        setTimeout(()=>{
+          spinner.style.display="none";
+
+        },1000)
         Swal.fire({
           title:"Login Sesion",
           text:response.message,
@@ -208,6 +213,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         })
         authenticating_form.reset();
         AuthStorage.save(response);
+        window.location.href="dashboard.html"
         console.log(AuthStorage.get())
         return;
       }else{
