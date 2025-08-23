@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     try {
       let request = await fetch(
-        "http://172.16.17.113:8080/laughter/user/register",
+        "http://172.16.130.195:8080/laughter/user/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
