@@ -312,7 +312,90 @@ main {
             display: none;
         }
     }
+    .alert-popup{
+        
+        position: absolute;
+        bottom: 10%;
+        left: 80%;
+        width: 250px;
+        height: 45px;
+        border-radius: 5px;
+        transform: translateX(0px);
+        @include global.center-object;
+        background: global.$alert-primary-success;
+        color: global.$primary-white-dove-color;
+    }
 
+}
+
+.hero{
+    background: #051937;
+    .dashboard-nav{
+        
+        height: 5vh;
+        .logo{
+            article{
+                color: global.$primary-white-dove-color;
+                position: relative;
+                right: 15%;
+                opacity: 0;
+                transform: translatex(15px);
+                animation: logo-animation 1s ease-in forwards;
+                animation-delay: 1.0s;
+            }
+        }
+        .user{
+            gap: 10pt;
+            span{
+                background: black;
+                position: relative;
+                left: 20%;
+                color: global.$primary-white-pure-color;
+            }
+            .badge{
+                height: 35px;
+                width: 35px;
+                border-radius: 100%;
+                @include global.center-object;
+                cursor: pointer;
+                background: global.$primary-white-dove-color;
+                color: #051937;
+
+                .options{
+                    position: absolute;
+                    z-index: 1;
+                    height: 200px;
+                    border-radius: 5px;
+                    width: 150px;
+                    top: 7.5vh;
+                    box-shadow: #051937;
+                    display: none;
+                }
+            }
+            .theme{
+               height: 30px;
+               width: 110px;
+               border-radius: 25px;
+               @include global.center-object;
+               font-family: poppins;
+               font-weight: 300;
+               font-size: small;
+               flex-direction: row;
+               background: global.$primary-white-dove-color;
+            }
+            .current-theme{
+                width: fit-content;
+                display: flex;
+                color: black;
+                position: relative;
+                left: 5%;
+                opacity: 0;
+                transform: translateY(15px);
+                background: none;
+                animation: current-theme-animation 1s ease-in forwards;
+            }     
+        }
+    }
 }
 
 
@@ -349,5 +432,26 @@ footer {
     100%{
         opacity: 1;
         transform: translateY(0%);
+    }
+}
+@keyframes logo-animation{
+    0%{
+        opacity: 0;
+        transform: translateX(15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes current-theme-animation{
+    0%{
+        opacity: 0;
+        transform: translateY(15px);
+        
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);   
     }
 }

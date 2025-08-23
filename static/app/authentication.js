@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     try {
       let request = await fetch(
-        "http://172.16.17.113:8080/laughter/user/recover",
+        "http://172.16.130.195:8080/laughter/user/recover",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     try{
       let spinner=document.getElementById("login-spinner");
       spinner.style.display="flex";
-      let request= await fetch("http://172.16.17.113:8080/laughter/user/login",{
+      let request= await fetch("http://172.16.130.195:8080/laughter/user/login",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(userToBeAuthenticated)
@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         console.log(AuthStorage.get())
         return;
       }else{
+        spinner.style.display="none";
         Swal.fire({
           title:"Login Sesion",
           text:response.message,
@@ -225,6 +226,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         })
       }
     }catch(error){
+      spinner.style.display="none";
       Swal.fire({
         title: "Login session",
         text: error,
