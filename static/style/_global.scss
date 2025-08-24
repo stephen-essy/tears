@@ -26,8 +26,8 @@ $font-logo:'cal sans';
 }
 @mixin back-dropped-nav{
     min-width: 100%;
-    min-height: 10vh;
-    height: 10vh;
+    min-height: 8vh;
+    height: 8vh;
     background: rgb(237, 237, 237,.1);
     backdrop-filter:blur(10px); 
     @include fixed-nav(); 
