@@ -18,8 +18,8 @@ body {
 
 nav {
   min-width: 100%;
-  min-height: 10vh;
-  height: 10vh;
+  min-height: 8vh;
+  height: 8vh;
   background: rgba(237, 237, 237, 0.1);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -321,7 +321,7 @@ main .top .top-hero .top-hero-card .card-main {
 }
 
 .hero {
-  background: #051937;
+  background: #000101;
 }
 .hero .dashboard-nav {
   height: 5vh;
@@ -355,6 +355,13 @@ main .top .top-hero .top-hero-card .card-main {
   background: #F0EFE7;
   color: #051937;
 }
+.hero .dashboard-nav .user .badge #user-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hero .dashboard-nav .user .badge .options {
   position: absolute;
   z-index: 1;
@@ -362,8 +369,34 @@ main .top .top-hero .top-hero-card .card-main {
   border-radius: 5px;
   width: 150px;
   top: 7.5vh;
-  box-shadow: #051937;
+  box-shadow: rgba(0, 0, 0, 0);
   display: none;
+  background: #F0EFE7;
+}
+.hero .dashboard-nav .user .badge .options ul {
+  width: 100%;
+  list-style: none;
+  height: 100%;
+}
+.hero .dashboard-nav .user .badge .options ul li {
+  list-style: none;
+  color: white;
+  background: black;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+.hero .dashboard-nav .user .badge .options ul .log-out {
+  align-items: center;
+  justify-content: space-between;
+}
+.hero .dashboard-nav .user .badge .options ul .log-out i {
+  padding-right: 10px;
+}
+.hero .dashboard-nav .user .badge .options ul .li:hover {
+  background: #3b3e3e;
 }
 .hero .dashboard-nav .user .theme {
   height: 30px;
