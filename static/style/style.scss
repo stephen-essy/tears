@@ -106,6 +106,7 @@ main {
         .top-hero {
             @include global.center-object;
             font-family: 'poppins';
+
             .top-hero-card {
                 @include global.center-object;
                 background: rgb(241, 241, 241);
@@ -121,7 +122,7 @@ main {
                 opacity: 0;
                 transform: translateY(40%);
                 animation: top-hero-animation 1.5s ease-out forwards;
-                animation-delay:2.0s ;
+                animation-delay: 2.0s;
 
                 .card-main {
                     width: 100%;
@@ -166,7 +167,7 @@ main {
                 width: 90%;
                 height: 40px;
                 background: white;
-                
+
                 @include global.center-object;
                 border-radius: 15px;
                 position: relative;
@@ -270,7 +271,7 @@ main {
                     font-family: 'Quicksand';
                     color: white;
 
-                    button{
+                    button {
                         outline: none;
                         background: none;
                         color: white;
@@ -291,50 +292,31 @@ main {
             }
 
         }
-        .sign-up{
+
+        .sign-up {
             display: none;
         }
-        .recover-email{
+
+        .recover-email {
             position: relative;
             transform: translateX(5%);
             opacity: 0;
             display: none;
-            transition: opacity 0.5s ease-in-out,transform 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
-        .alert {
-            color: white;
-            width: 75%;
-            height: 35px;
-            @include global.center-object;
-            text-align: center;
-            background: green;
-            border-radius: 5px;
-            display: none;
-        }
-    }
-    .alert-popup{
-        
-        position: absolute;
-        bottom: 10%;
-        left: 80%;
-        width: 250px;
-        height: 45px;
-        border-radius: 5px;
-        transform: translateX(0px);
-        @include global.center-object;
-        background: global.$alert-primary-success;
-        color: global.$primary-white-dove-color;
     }
 
 }
 
-.hero{
-    background: #000101;
-    .dashboard-nav{
-        
+.hero {
+    color: black;
+
+    .dashboard-nav {
+
         height: 5vh;
-        .logo{
-            article{
+
+        .logo {
+            article {
                 color: global.$primary-white-dove-color;
                 position: relative;
                 right: 15%;
@@ -344,15 +326,18 @@ main {
                 animation-delay: 1.0s;
             }
         }
-        .user{
+
+        .user {
             gap: 10pt;
-            span{
+
+            span {
                 background: black;
                 position: relative;
                 left: 20%;
                 color: global.$primary-white-pure-color;
             }
-            .badge{
+
+            .badge {
                 height: 35px;
                 width: 35px;
                 border-radius: 100%;
@@ -361,13 +346,13 @@ main {
                 background: global.$primary-white-dove-color;
                 color: #051937;
 
-                #user-icon{
+                #user-icon {
                     width: 100%;
                     height: 100%;
                     @include global.center-object;
                 }
 
-                .options{
+                .options {
                     position: absolute;
                     z-index: 1;
                     height: 200px;
@@ -378,11 +363,12 @@ main {
                     display: none;
                     background: global.$primary-white-dove-color;
 
-                    ul{
+                    ul {
                         width: 100%;
                         list-style: none;
                         height: 100%;
-                        li{
+
+                        li {
                             list-style: none;
                             color: white;
                             background: black;
@@ -391,33 +377,38 @@ main {
                             display: flex;
                             align-items: center;
                             padding-left: 5px;
-                        } 
-                        .log-out{
+                        }
+
+                        .log-out {
                             align-items: center;
                             justify-content: space-between;
 
-                            i{
+                            i {
                                 padding-right: 10px;
                             }
-                        }  
-                        .li:hover{
+                        }
+
+                        .li:hover {
                             background: #3b3e3e;
                         }
                     }
                 }
             }
-            .theme{
-               height: 30px;
-               width: 110px;
-               border-radius: 25px;
-               @include global.center-object;
-               font-family: poppins;
-               font-weight: 300;
-               font-size: small;
-               flex-direction: row;
-               background: global.$primary-white-dove-color;
+
+            .theme {
+                height: 30px;
+                width: 110px;
+                border-radius: 25px;
+                @include global.center-object;
+                font-family: poppins;
+                font-weight: 300;
+                font-size: small;
+                flex-direction: row;
+                background: global.$primary-white-dove-color;
+                cursor: pointer;
             }
-            .current-theme{
+
+            .current-theme {
                 width: fit-content;
                 display: flex;
                 color: black;
@@ -427,9 +418,71 @@ main {
                 transform: translateY(15px);
                 background: none;
                 animation: current-theme-animation 1s ease-in forwards;
-            }     
+            }
         }
     }
+}
+
+.light {
+    background: global.$primary-white-pure-color;
+    color: #000101;
+}
+
+.alert-popup {
+    position: fixed;
+    top: 85%;
+    left: 75%;
+    height: 50px;
+    width: 350px;
+    background-color: global.$primary-white-pure-color;
+    border-radius: 5px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    display: flex;
+    opacity: 0;
+    transform: translateY(190%);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+    .alert-popup-icon {
+        width: 15%;
+        @include global.center-object;
+        height: 100%;
+
+        i {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            @include global.center-object;
+            background: global.$alert-primary-success;
+            color: white;
+        }
+    }
+
+    .alert-popup-message {
+        width: 70%;
+        @include global.center-object;
+        height: 100%;
+    }
+
+    .alert-popup-action {
+        width: 15%;
+        height: 100%;
+        @include global.center-object;
+    }
+}
+
+.alert-popup.show {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.alert-success {
+    background-color: #4CAF50;
+    background: global.$primary-white-pure-color;
+}
+
+.alert-error {
+    background-color: #f44336;
+    background: global.$primary-white-pure-color;
 }
 
 
@@ -438,6 +491,7 @@ footer {
     @include global.center-object;
     font-family: 'poppins';
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -447,6 +501,7 @@ footer {
         transform: rotate(360deg);
     }
 }
+
 @keyframes paragraphEntrance {
     0% {
         opacity: 0;
@@ -458,34 +513,40 @@ footer {
         transform: translateY(0);
     }
 }
-@keyframes top-hero-animation{
-    0%{
+
+@keyframes top-hero-animation {
+    0% {
         opacity: 0;
         transform: translateY(40%);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateY(0%);
     }
 }
-@keyframes logo-animation{
-    0%{
+
+@keyframes logo-animation {
+    0% {
         opacity: 0;
         transform: translateX(15px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateX(0px);
     }
 }
-@keyframes current-theme-animation{
-    0%{
+
+@keyframes current-theme-animation {
+    0% {
         opacity: 0;
         transform: translateY(15px);
-        
+
     }
-    100%{
+
+    100% {
         opacity: 1;
-        transform: translateY(0px);   
+        transform: translateY(0px);
     }
 }

@@ -33,7 +33,7 @@
     </style>
 </head>
 
-<body class="dashboard hero">
+<body class="dashboard hero dark">
     <nav class="wrapper-header-nav dashboard-nav">
         <section class="header-nav logo">
             <article>
@@ -57,15 +57,47 @@
                     </ul>
                 </section>
             </span>
-            <span class="dashboard-content-user theme">
+            <span class="dashboard-content-user theme" id="theme-toogle">
                 <i class="fa-regular fa-moon"></i>
-                <span class="theme current-theme">light mode</span>
+                <span class="theme current-theme" id="current-theme">light mode</span>
             </span>
         </section>
     </nav>
     <main>
-        <button id="connect">click</button>
-        <p id="status" style="color: white;">Hello</p>
+        <section>
+            <form action="" class="user profile" id="profile-creation">
+                <div>
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender">
+                        <option value="MALE">male</option>
+                        <option value="FEMALE">female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="phoneNumber">phone number</label>
+                    <select name="country-code" id="country-code">
+                        <option value="+255">+255</option>
+                    </select>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="phone number" required>
+                </div>
+                <div>
+                    <label for="university">university</label>
+                    <input type="text" name="university" id="university" placeholder="university">
+
+                </div>
+                <div>
+                    <label for="corse">Corse</label>
+                    <input type="text" name="corse" id="corse" placeholder="corse" >
+                </div>
+                <div>
+                    <button id="profile-button">
+                        <span>Submit</span>
+                    </button>
+                    <a href="hero.html">click</a>
+                    <p id="token-value"></p>
+                </div>
+            </form>
+        </section>
     </main>
     <footer></footer>
     <script>
@@ -83,6 +115,7 @@
        })
 
     </script>
+    <script type="module" src="/static/app/ui.js"></script>
     <script type="module" src="/static/app/authentication.js"></script>
     <script type="module" src="/static/app/main.js"></script>
 </body>

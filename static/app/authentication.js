@@ -1,19 +1,33 @@
+import { alert } from "./ui.js";
+export const AuthStorage = {
+  save: (data) => {
+    const authData = {
+      name: data.userName,
+      token: data.token,
+    };
+    localStorage.setItem(
+      "authenticated-laughter-user",
+      JSON.stringify(authData)
+    );
+  },
+  get: () => {
+    const raw = localStorage.getItem("authenticated-laughter-user");
+    return raw ? JSON.parse(raw) : null;
+  },
+  clear: () => {
+    localStorage.removeItem("authenticated-laughter-user");
+  },
+};
 
-export const AuthStorage={
-  save:(data)=>{
-    const authData={
-      name:data.userName,
-      token:data.token,
-    }
-    localStorage.setItem("authenticated-laughter-user",JSON.stringify(authData))
-  },
-  get:()=>{
-    const raw=localStorage.getItem("authenticated-laughter-user");
-    return raw ? JSON.parse(raw):null;
-  },
-  clear:()=>{
-    localStorage.removeItem("authenticated-laughter-user")
-  }  
+export function isTokenExpired(token){
+  try{
+    const payLoad=JSON.parse(atob(token.split('.')[1]));
+    const expiry = payLoad.exp*1000;
+    return Date.now()>expiry;
+  }catch(error){
+    console.error("Invalid token format",error)
+    return true;
+  }
 }
 document.addEventListener("DOMContentLoaded", (e) => {
   e.preventDefault();
@@ -66,7 +80,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     try {
       let request = await fetch(
-        "http://172.16.130.195:8080/laughter/user/register",
+        "http://localhost:8080/laughter/user/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -128,14 +142,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
 
     try {
-      let request = await fetch(
-        "http://172.16.130.195:8080/laughter/user/recover",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
+      let request = await fetch("http://localhost:8080/laughter/user/recover", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
 
       let response = await request.json();
       if (request.ok) {
@@ -146,7 +157,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
           timer: 5000,
         });
         reset_password_form.reset();
-
       } else {
         Swal.fire({
           title: "Recovery Password",
@@ -172,61 +182,46 @@ document.addEventListener("DOMContentLoaded", (e) => {
     };
 
     if (!userToBeAuthenticated.email || !userToBeAuthenticated.password) {
-      Swal.fire({
-        title: "Registration Status",
-        text: "Please Fill all fields",
-        icon: "warning",
-        timer: 5000,
-      });
+      alert("please fill all the fields", `error`);
       return;
     }
-    if(!emailRegex.test(userToBeAuthenticated.email)){
-      Swal.fire({
-        title: "Login session",
-        text: "Email is invalid",
-        icon: "warning",
-        timer: 5000,
-      });
-      return; 
+    if (!emailRegex.test(userToBeAuthenticated.email)) {
+      alert("please Enter a valid Email", `error`);
+      return;
     }
 
-    try{
-      let spinner=document.getElementById("login-spinner");
-      spinner.style.display="flex";
-      let request= await fetch("http://172.16.130.195:8080/laughter/user/login",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(userToBeAuthenticated)
-      })
+    try {
+      let spinner = document.getElementById("login-spinner");
+      spinner.style.display = "flex";
+      let request = await fetch("http://localhost:8080/laughter/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userToBeAuthenticated),
+      });
 
       let response = await request.json();
-      if(request.ok){
-        setTimeout(()=>{
-          spinner.style.display="none";
+      if (request.ok) {
+        setTimeout(() => {
+          spinner.style.display = "none";
+        }, 1000);
+        
+        alert(`${response.message}`,`success`);
 
-        },1000)
-        Swal.fire({
-          title:"Login Sesion",
-          text:response.message,
-          icon:"success",
-          timer:5000
-        })
-        authenticating_form.reset();
-        AuthStorage.save(response);
-        window.location.href="dashboard.html"
-        console.log(AuthStorage.get())
+        setTimeout(() => {
+          authenticating_form.reset();
+          AuthStorage.save(response);
+        }, 2000);
+
+        setTimeout(() => {
+          window.location.href = "hero.html";
+        }, 3000);
         return;
-      }else{
-        spinner.style.display="none";
-        Swal.fire({
-          title:"Login Sesion",
-          text:response.message,
-          icon:"error",
-          timer:5000
-        })
+      } else {
+        spinner.style.display = "none";
+        alert(`${response.message}`, `error`);
       }
-    }catch(error){
-      spinner.style.display="none";
+    } catch (error) {
+      spinner.style.display = "none";
       Swal.fire({
         title: "Login session",
         text: error,

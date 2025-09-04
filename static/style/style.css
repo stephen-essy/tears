@@ -293,35 +293,9 @@ main .top .top-hero .top-hero-card .card-main {
   display: none;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
-.authentication .login .alert {
-  color: white;
-  width: 75%;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: green;
-  border-radius: 5px;
-  display: none;
-}
-.authentication .alert-popup {
-  position: absolute;
-  bottom: 10%;
-  left: 80%;
-  width: 250px;
-  height: 45px;
-  border-radius: 5px;
-  transform: translateX(0px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #4CAF50;
-  color: #F0EFE7;
-}
 
 .hero {
-  background: #000101;
+  color: black;
 }
 .hero .dashboard-nav {
   height: 5vh;
@@ -410,6 +384,7 @@ main .top .top-hero .top-hero-card .card-main {
   font-size: small;
   flex-direction: row;
   background: #F0EFE7;
+  cursor: pointer;
 }
 .hero .dashboard-nav .user .current-theme {
   width: -moz-fit-content;
@@ -422,6 +397,73 @@ main .top .top-hero .top-hero-card .card-main {
   transform: translateY(15px);
   background: none;
   animation: current-theme-animation 1s ease-in forwards;
+}
+
+.light {
+  background: white;
+  color: #000101;
+}
+
+.alert-popup {
+  position: fixed;
+  top: 85%;
+  left: 75%;
+  height: 50px;
+  width: 350px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  opacity: 0;
+  transform: translateY(190%);
+  transition: opacity 0.5s, transform 0.5s;
+  z-index: 1000;
+}
+.alert-popup .alert-popup-icon {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.alert-popup .alert-popup-icon i {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4CAF50;
+  color: white;
+}
+.alert-popup .alert-popup-message {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.alert-popup .alert-popup-action {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-popup.show {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.alert-success {
+  background-color: #4CAF50;
+  background: white;
+}
+
+.alert-error {
+  background-color: #f44336;
+  background: white;
 }
 
 footer {
