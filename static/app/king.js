@@ -1,5 +1,6 @@
 import { alert } from "./ui.js";
-import { AuthStorage,isTokenExpired } from "./authentication.js";
+import { AuthStorage, isTokenExpired } from "./authentication.js";
+
 
 let connection_status_display = document.getElementById("connection-status");
 let stompClient = null;
@@ -8,9 +9,8 @@ const user = AuthStorage.get();
 const createEvent = document.getElementById("event-create");
 
 function connectWebSocket() {
-
-  if(!user.token || isTokenExpired(user.token)){
-    connection_status_display.textContent="token expired";
+  if (!user.token || isTokenExpired(user.token)) {
+    connection_status_display.textContent = "token expired";
     return;
   }
   const socket = new SockJS("http://localhost:8080/ws");
@@ -40,7 +40,7 @@ function connectWebSocket() {
     }
   );
 }
-function createActivity(e) {
+async function createActivity(e) {
   e.preventDefault();
   let eventName = {
     name: document.getElementById("event-name").value,
@@ -63,13 +63,28 @@ function createActivity(e) {
   let endsAt = new Date(`1970-01-01T${eventName.endTime}:00`);
 
   if (beginAt > endsAt) {
-    alert("Time error",`error`)
-    return
+    alert("Time error", `error`);
+    return;
   }
+  try {
+    let request = await fetch("http://localhost:8080/laughter/event/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(eventName),
+    });
 
-  alert("moving to greatness",`success`)
-
-  console.log(eventName);
+    let response = await request.json();
+    if (request.ok) {
+      alert(response.message, `success`);
+      return;
+    }
+    alert(response.message, `error`);
+  } catch (err) {
+    alert("Error in processing", `error`);
+  }
 }
 connectWebSocket();
 setInterval(() => {
