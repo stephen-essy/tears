@@ -1,3 +1,5 @@
+import { AuthStorage } from "./authentication.js";
+const user =AuthStorage.get()
 $(document).ready(()=>{
     let isDark=true;
     let theme=$('.dark');
@@ -47,6 +49,14 @@ export function updateClock() {
     clock.textContent = timeString;
 }
 
+export function showUserName(){
+    const badgeName=document.getElementById("user-name")
+    const name=user.name;
+    if(!badgeName || !name) return
+    badgeName.textContent=name;
+}
+
+showUserName();
 updateClock();
 setInterval(updateClock, 1000);
 
