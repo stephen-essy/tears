@@ -1,0 +1,314 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 5.5vh;
+  background: indigo;
+  position: sticky;
+  z-index: 100000;
+}
+header .nav {
+  height: inherit;
+  display: flex;
+  width: 100%;
+}
+header .nav aside {
+  background: transparent;
+}
+header .nav .aside-left {
+  color: white;
+  font-family: "poppins";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .nav .aside-left h1 {
+  position: absolute;
+  left: 2%;
+}
+header .nav .aside-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  gap: 5px;
+}
+header .nav .aside-right .span-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .nav .aside-right .span-badge #user-icon {
+  background: indianred;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+header .nav .aside-right .span-badge .badge-options {
+  position: absolute;
+  background: #f5f5f5;
+  top: 6vh;
+  width: 120px;
+  border-radius: 0px;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+header .nav .aside-right .span-badge .badge-options ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+header .nav .aside-right .span-badge .badge-options ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  height: 25px;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: 5px;
+  width: 300px;
+  background: #2d2d2d;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  display: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div.active {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div #close-profile {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  background: #e74c3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div #close-profile:hover {
+  background: #c0392b;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div #close-profile i {
+  font-size: 14px;
+  color: white;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information #picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: indianred;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: white;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information #name {
+  font-size: 18px;
+  font-weight: 600;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information .edu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information .edu span {
+  width: 100%;
+  background: #3b3e3e;
+  color: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .information .edu span i {
+  color: #9b59b6;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .customize {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .customize .profile-update {
+  background: #6a0dad;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .customize .profile-update:hover {
+  background: #580b9e;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .customize .profile-update:last-child {
+  background: #e74c3c;
+}
+header .nav .aside-right .span-badge .badge-options ul #user-profile div .customize .profile-update:last-child:hover {
+  background: #c0392b;
+}
+header .nav .aside-right .span-badge .badge-options ul #sign-out {
+  display: flex;
+  justify-content: space-between;
+}
+header .nav .aside-right .span-badge .badge-options ul #sign-out i {
+  padding-right: 5px;
+}
+header .nav .aside-right .span-badge .badge-options ul .li:hover {
+  background: #3b3e3e;
+  color: white;
+}
+header .nav .aside-right .theme {
+  height: 30px;
+  width: 110px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: poppins;
+  font-weight: 300;
+  font-size: small;
+  flex-direction: row;
+  background: #F0EFE7;
+  cursor: pointer;
+}
+header .nav .aside-right .current-theme {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  color: black;
+  position: relative;
+  left: 5%;
+  opacity: 0;
+  transform: translateY(15px);
+  background: none;
+  animation: current-theme-animation 1s ease-in forwards;
+}
+header .nav .aside-right #date-time-display {
+  margin-left: 0%;
+  color: white;
+}
+header .nav .aside-right #date-time-display ul {
+  display: flex;
+  position: relative;
+  left: 5%;
+  gap: 5px;
+  list-style: none;
+}
+header .nav .aside-right #date-time-display ul li {
+  font-family: "poppins";
+}
+
+main {
+  background: #f5f5f5;
+  color: white;
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  flex-direction: column;
+}
+main section {
+  width: 85%;
+  background: #f5f5f5;
+  height: 50vh;
+  border-radius: 15px;
+  margin-top: 0vh;
+  z-index: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+main div {
+  width: 85%;
+  height: 25vh;
+  margin-top: 2vh;
+  color: black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5pt;
+}
+main .card {
+  background: #f5f5f5;
+  font-family: "poppins";
+}
+main .on-going {
+  background: #c0392b;
+}
+main .upcoming {
+  background: #6a0dad;
+}
+main .completed {
+  background: #e74c3c;
+}
+main .archieved {
+  background: #3b3e3e;
+}
+
+@keyframes current-theme-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}/*# sourceMappingURL=queen.css.map */

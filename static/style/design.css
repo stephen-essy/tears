@@ -145,7 +145,6 @@ body {
   width: 70%;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .queen .alert-popup .alert-popup-action {
@@ -160,11 +159,9 @@ body {
   transform: translateY(0%);
 }
 .queen .alert-success {
-  background-color: #4CAF50;
   background: white;
 }
 .queen .alert-error {
-  background-color: #f44336;
   background: white;
 }
 .queen .section .left-section-header {
@@ -214,12 +211,21 @@ body {
 .queen .section .row-header .right .user-badge {
   height: 35px;
   width: 35px;
-  background: indianred;
-  color: white;
+  background: white;
+  color: black;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.queen .section .row-header .right .user-badge span {
+  position: absolute;
+  background: #4CAF50;
+  height: 10px;
+  width: 10px;
+  bottom: 94%;
+  border-radius: 50%;
+  left: 85%;
 }
 .queen .section .row-cards {
   height: 100%;

@@ -149,7 +149,8 @@ body {
         .alert-popup-message {
             width: 70%;
             height: 100%;
-            @include global.center-object;
+            display: flex;
+            align-items: center;
 
         }
 
@@ -166,12 +167,10 @@ body {
     }
 
     .alert-success {
-        background-color: #4CAF50;
         background: global.$primary-white-pure-color;
     }
 
     .alert-error {
-        background-color: #f44336;
         background: global.$primary-white-pure-color;
     }
 
@@ -226,11 +225,23 @@ body {
                 .user-badge {
                     height: 35px;
                     width: 35px;
-                    background: indianred;
-                    color: white;
+                    background: white;
+                    color: black;
                     border-radius: 50%;
                     @include global.center-object;
+
+                    span{
+                        position: absolute;
+                        background: #4CAF50;
+                        height: 10px;
+                        width: 10px;
+                        bottom: 94%;
+                        border-radius: 50%;
+                        left: 85%;
+                    }
                 }
+
+
             }
         }
 

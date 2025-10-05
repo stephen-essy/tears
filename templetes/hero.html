@@ -68,6 +68,7 @@
                 <section class="row-header-column right">
                     <div class="user-badge">
                         <i class="fa-regular fa-user"></i>
+                        <span id="is-connected"></span>
                     </div>
                     <span id="user-name" style="color: white;">hello!</span>
                 </section>
@@ -104,13 +105,13 @@
 
                         </form>
                     </div>
+                    <p>Accomplished Events: <span id="number">Loading...</span></p>
+                    <p>ongoing Events: <span id="ongoing">Loading...</span></p>
+                    <p>upcoming Events: <span id="upcoming">Loading...</span></p>
+                    <a href="dashboard.html">click</a>
                     
                 </section>
                 <div id="clock" class="clock-display"></div>
-                <div id="server-status" class="clock-display">
-                    <i class="fa-solid fa-cloud"></i>
-                    <span id="connection-status"></span>
-                </div>
         </section>
         <div class="alert-popup" id="alert-popup">
             <span class="alert-popup-icon" id="popup-icon">
@@ -118,9 +119,7 @@
             </span>
             <section class="alert-popup-message" id="popup-message">
             </section>
-            <!-- <section class="alert-popup-action">
-                <button>ok</button>
-            </section> -->
+            
         </div>
 
     </main>
@@ -128,8 +127,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.1/dist/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script type="module" src="/static/app/ui.js"></script>
+    <script type="module" src="/static/app/authentication.js"></script>
     <script type="module" src="/static/app/king.js"></script>
-    <!-- <script type="module" src="/static/app/app.js"></script> -->
+    
 </body>
 
 </html>

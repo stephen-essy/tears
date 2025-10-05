@@ -439,7 +439,6 @@ main .top .top-hero .top-hero-card .card-main {
 .alert-popup .alert-popup-message {
   width: 70%;
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -457,12 +456,10 @@ main .top .top-hero .top-hero-card .card-main {
 }
 
 .alert-success {
-  background-color: #4CAF50;
   background: white;
 }
 
 .alert-error {
-  background-color: #f44336;
   background: white;
 }
 

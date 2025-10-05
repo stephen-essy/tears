@@ -459,7 +459,8 @@ main {
 
     .alert-popup-message {
         width: 70%;
-        @include global.center-object;
+        display: flex;
+        align-items: center;
         height: 100%;
     }
 
@@ -476,12 +477,10 @@ main {
 }
 
 .alert-success {
-    background-color: #4CAF50;
     background: global.$primary-white-pure-color;
 }
 
 .alert-error {
-    background-color: #f44336;
     background: global.$primary-white-pure-color;
 }
 
