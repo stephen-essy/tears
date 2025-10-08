@@ -1,5 +1,6 @@
 import { AuthStorage } from "./authentication.js";
 const user = AuthStorage.get();
+const logOutButton=document.getElementById("sign-out");
 $(document).ready(() => {
   let isDark = true;
   let theme = $(".dark");
@@ -77,8 +78,11 @@ export function showUserProfile() {
   phone.textContent = user.profile.phoneNumber;
 }
 
-console.log(user.token);
-console.log(user.profile);
+logOutButton.addEventListener("click",()=>{
+  window.location.href="../index.html";
+  AuthStorage.clear();
+})
+
 showUserName();
 showUserProfile();
 updateClock();
