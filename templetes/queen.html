@@ -33,76 +33,135 @@
                             <li class="li" id="user-profile">profile
                                 <div id="profile-info">
                                     <span id="close-profile"><i class="fa-solid fa-x"></i></span>
-                                    <section class="profile-info-parent information" >
+                                    <section class="profile-info-parent information">
                                         <span class="profile-info-child" id="picture">
                                             <i class="fa-regular fa-user"></i>
                                         </span>
-                                        <span class="profile-info-child" id="name">name</span>
+                                        <span class="profile-info-child" id="name"> create your profile</span>
                                         <aside class="edu">
                                             <span class="profile-info-child">
                                                 <i class="fa-solid fa-graduation-cap"></i>
-                                                <li id="uni"></li>
-                                            </span>
-                                            <span class="profile-info-child">
-                                                <i class="fa-solid fa-book"></i>
-                                                <li id="corse"></li>
-                                            </span>
-                                            <span class="profile-info-child">
-                                                <i class="fa-solid fa-phone"></i>
-                                                <li id="phone"></li>
-                                                </span>
-                                        </aside>
-                                        
-                                    </section>
-                                    <section class="profile-info-parent customize">
-                                        <span class="profile-update">
-                                            <i class="fa-solid fa-pencil"></i>
-                                            update
-                                        </span>
-                                        <span class="profile-update">
-                                            <i class="fa-solid fa-trash"></i>
-                                            delete</span>
-                                    </section>
-                                </div>
-                            </li>
-                            <li class="li">Support</li>
-                            <li class="li">Setting</li>
-                            <hr>
-                            <li class="li log-out" id="sign-out">
-                                log out
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </li>
-                        </ul>
-                    </section>
+                            <li id="uni"></li>
                 </span>
-                <span class="dashboard-content-user theme" id="theme-toogle">
-                    <i class="fa-regular fa-moon"></i>
-                    <span class="theme current-theme" id="current-theme">light mode</span>
+                <span class="profile-info-child">
+                    <i class="fa-solid fa-book"></i>
+                    <li id="corse"></li>
                 </span>
+                <span class="profile-info-child">
+                    <i class="fa-solid fa-phone"></i>
+                    <li id="phone"></li>
+                </span>
+            </aside>
+
+            </section>
+            <section class="profile-info-parent customize">
+                <span class="profile-update" id="open-profile-modal">
+                    <i class="fa-solid fa-pencil">
+                    </i>
+                    <p id="update-create">update</p>
+                </span>
+                <span class="profile-update" id="profile-trash">
+                    <i class="fa-solid fa-trash"></i>
+                    delete</span>
+            </section>
+            </div>
+            </li>
+            <li class="li">messages</li>
+            <li class="li">Setting</li>
+            <hr>
+            <li class="li log-out" id="sign-out">
+                log out
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <div class="alert-card" id="alert-card">
+                    <aside class="alert-card-children" id="alert-card-message">
+                        are you sure you want to log out ?
+                    </aside>
+                    <aside class="alert-card-children" id="alert-card-button">
+                        <button id="sign-out-button">
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                    </aside>
+                </div>
+            </li>
+            </ul>
+            </section>
+            </span>
+
+            <span class="dashboard-content-user theme" id="theme-toogle">
+                <i class="fa-regular fa-moon"></i>
+                <span class="theme current-theme" id="current-theme">light mode</span>
+            </span>
             </aside>
         </nav>
     </header>
     <main>
         <section>
-            <canvas id="myChart"></canvas>
+            <h1 id="myChart" style="color: black;"></h1>
         </section>
-        <div>
+        <div class="card-parent">
             <div class="card on-going">On going</div>
             <div class="card upcoming">upcoming</div>
             <div class="card completed">completed</div>
             <div class="card archieved">archievement</div>
         </div>
-        <div class="alert-card">
-        are you sure you want to log out
-    </div>
+        <div id="profile-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form class="user profile" id="profile-creation">
+                    <div class="profile-input">
+                        <label for="gender">
+                            <i class="fa-solid fa-venus-mars"></i>
+                        </label>
+                        <select name="gender" id="gender">
+                            <option>--Gender--</option>
+                            <option value="MALE">male</option>
+                            <option value="FEMALE">female</option>
+                        </select>
+                    </div>
+                    <div class="profile-input">
+                        <label for="phoneNumber">
+                            <i class="fa-solid fa-phone"></i>
+                        </label>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="phone number" required>
+                    </div>
+                    <div class="profile-input">
+                        <label for="university">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </label>
+                        <input type="text" name="university" id="current-university" placeholder="university">
+
+                    </div>
+                    <div class="profile-input">
+                        <label for="corse">
+                           <i class="fa-solid fa-book"></i> 
+                        </label>
+                        <input type="text" name="corse" id="current-corse" placeholder="corse">
+                    </div>
+                    <div class="profile-input" id="button-navigation">
+                        <button id="profile-button">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert-popup" id="alert-popup">
+            <span class="alert-popup-icon" id="popup-icon">
+                <i class="fa-solid fa-check" id="popup-icon-icon"></i>
+            </span>
+            <span class="alert-popup-message" id="popup-message">
+                hello 
+            </span>
+        </div>
     </main>
-    
+
     <script>
         const icon = document.getElementById('user-icon')
         const iconOptions = document.getElementById('badge-options')
-        const profile= document.getElementById('user-profile')
-        const user_profile=document.getElementById('profile-info')
-        const profile_close=document.getElementById('close-profile')
+        const profile = document.getElementById('user-profile')
+        const user_profile = document.getElementById('profile-info')
+        const profile_close = document.getElementById('close-profile')
+        const alert_card = document.getElementById("alert-card");
 
         icon.addEventListener('click', (e) => {
             e.stopPropagation()
@@ -111,26 +170,26 @@
         document.addEventListener('click', (e) => {
             if (!icon.contains(e.target) && !iconOptions.contains(e.target)) {
                 iconOptions.style.display = 'none'
-                user_profile.style.display="none"
+                user_profile.style.display = "none"
+                alert_card.style.opacity = '0';
             }
         })
-        profile.addEventListener("click",(e)=>{
-            setTimeout(()=>{
-                user_profile.style.display="flex"
-                user_profile.style.opacity="1"
+        profile.addEventListener("click", (e) => {
+            setTimeout(() => {
+                user_profile.style.display = "flex"
+                user_profile.style.opacity = "1"
             })
-            
+
         })
-        profile_close.addEventListener("click",(e)=>{
+        profile_close.addEventListener("click", (e) => {
             e.preventDefault()
-            setTimeout(()=>{
-                user_profile.style.display="none"
-                user_profile.style.display="0"
-            },500)  
+            setTimeout(() => {
+                user_profile.style.display = "none"
+                user_profile.style.opacity = "0"
+            }, 500)
         })
     </script>
     <script type="module" src="/static/app/ui.js"></script>
-    <script type="module" src="/static/app/graphs.js"></script>
 </body>
 
 </html>

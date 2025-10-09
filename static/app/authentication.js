@@ -155,11 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let response = await request.json();
       if (request.ok) {
-        console.log(response.token)
+        // console.log(response.token)
         setTimeout(() => { if (spinner) spinner.style.display = "none"; }, 1000);
 
         alert(`${response.message}`, "success");
-        console.log(response);
+        // console.log(response);
 
         setTimeout(() => {
           authenticating_form?.reset();

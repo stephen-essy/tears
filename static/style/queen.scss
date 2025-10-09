@@ -31,16 +31,17 @@ header {
         aside {
             background: transparent;
         }
-        .aside-left{
-            color :white;
+
+        .aside-left {
+            color: white;
             font-family: 'poppins';
             display: flex;
             justify-content: center;
             align-items: center;
 
-            h1{
+            h1 {
                 position: absolute;
-                left: 2%;  
+                left: 2%;
             }
         }
 
@@ -86,14 +87,14 @@ header {
                             display: flex;
                             align-items: center;
                             padding-left: 5px;
-                            height: 25px;
+                            height: 30px;
                             width: 100%;
                             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                             cursor: pointer;
                         }
 
                         #user-profile {
-                            
+
                             div {
                                 position: absolute;
                                 left: 100%;
@@ -111,7 +112,7 @@ header {
                                 display: none;
                                 opacity: 0;
                                 transform: scale(0.9);
-                                transition: opacity 0.4s ease, transform 0.4s ease;
+                                transition: opacity 0.4s ease, transform 0.4s ease, display 0.4s ease;
                                 z-index: 1000;
 
                                 &.active {
@@ -204,6 +205,11 @@ header {
                                         cursor: pointer;
                                         font-size: 14px;
                                         transition: background 0.3s ease;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 2px;
+                                        font-family: 'poppins';
 
                                         &:hover {
                                             background: #580b9e;
@@ -234,9 +240,23 @@ header {
                             background: #3b3e3e;
                             color: white;
                         }
+
+                        #sign-out:hover aside {
+                            color: black;
+                        }
                     }
                 }
             }
+
+            #user-message {
+                color: white;
+                height: 30px;
+                width: 30px;
+                background: indianred;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
 
             .theme {
                 height: 30px;
@@ -262,17 +282,19 @@ header {
                 background: none;
                 animation: current-theme-animation 1s ease-in forwards;
             }
-            #date-time-display{
+
+            #date-time-display {
                 margin-left: 0%;
                 color: white;
-                ul{
+
+                ul {
                     display: flex;
-                    position: relative; 
+                    position: relative;
                     left: 5%;
                     gap: 5px;
                     list-style: none;
 
-                    li{
+                    li {
                         font-family: 'poppins';
                     }
 
@@ -283,7 +305,8 @@ header {
     }
 
 }
-main{
+
+main {
     background: #f5f5f5;
     color: white;
     width: 100%;
@@ -294,7 +317,7 @@ main{
     z-index: 0;
     flex-direction: column;
 
-    section{
+    section {
         width: 85%;
         background: #f5f5f5;
         height: 50vh;
@@ -303,7 +326,8 @@ main{
         z-index: 0;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
-    div{
+
+    .card-parent {
         width: 85%;
         height: 25vh;
         margin-top: 2vh;
@@ -314,22 +338,228 @@ main{
         align-items: center;
         gap: 5pt;
     }
-    .card{
+
+    .card {
         background: #f5f5f5;
         font-family: 'poppins';
     }
-    .on-going{
+
+    .on-going {
         background: #c0392b;
     }
-    .upcoming{
+
+    .upcoming {
         background: #6a0dad;
     }
-    .completed{
+
+    .completed {
         background: #e74c3c;
     }
-    .archieved{
+
+    .archieved {
         background: #3b3e3e;
     }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background: transparent;
+        margin: 10% auto;
+        padding: 20px;
+        height: 400px;
+        border-radius: 8px;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            height: 100%;
+            width: 100%;
+            background: rgba(17, 24, 39, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5pt;
+            border-radius: 6px;
+
+            div {
+                background: #f5f5f5;
+                width: 90%;
+                height: 40px;
+                border-radius: 15px;
+            }
+
+            .profile-input {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                label {
+                    width: 15%;
+                    background: transparent;
+                    color: black;
+                    @include global.center-object;
+                    height: 100%;
+                }
+
+                select {
+                    width: 80%;
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                    background: transparent;
+                    font-family: 'poppins';
+                }
+
+                input {
+                    width: 85%;
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                    background: transparent;
+                    font-family: 'poppins';
+                }
+            }
+
+            #button-navigation {
+                background: none;
+
+                button {
+                    position: relative;
+                    top: 10px;
+                    @include global.button;
+                }
+
+            }
+        }
+    }
+
+    .close {
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+}
+
+.alert-card {
+    position: absolute;
+    background: global.$primary-white-pure-color;
+    width: 300px;
+    height: 5vh;
+    opacity: 0;
+    transform: translateX(23%);
+    left: 50%;
+    border-radius: 2px;
+    font-family: 'poppins';
+    font-size: small;
+    transition: opacity 0.3s, transform 0.3s;
+    display: flex;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    aside {
+        height: 100%;
+    }
+
+    #alert-card-message {
+        width: 75%;
+        @include global.center-object;
+
+    }
+
+    #alert-card-button {
+        @include global.center-object;
+        width: 25%;
+
+        button {
+            width: 30px;
+            height: 30px;
+            outline: none;
+            border: none;
+            border-radius: 50%;
+            font-family: 'poppins';
+            cursor: pointer;
+            background: global.$alert-primary-success;
+            color: global.$primary-white-pure-color;
+            text-align: center;
+
+            i {
+                color: #f5f5f5;
+                text-align: center;
+            }
+        }
+    }
+
+}
+
+.alert-popup {
+    position: fixed;
+    top: 85%;
+    left: 75%;
+    height: 50px;
+    width: 350px;
+    background-color: global.$primary-white-pure-color;
+    border-radius: 5px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    display: flex;
+    opacity: 0;
+    transform: translateY(190%);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+    color: black;
+    font-family: 'poppins';
+
+    .alert-popup-icon {
+        width: 15%;
+        @include global.center-object;
+        height: 100%;
+
+        i {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            @include global.center-object;
+            background: global.$alert-primary-success;
+            color: white;
+        }
+    }
+
+    .alert-popup-message {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .alert-popup-action {
+        width: 15%;
+        height: 100%;
+        @include global.center-object;
+    }
+}
+
+.alert-popup.show {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.alert-success {
+    background: global.$primary-white-pure-color;
+}
+
+.alert-error {
+    background: global.$primary-white-pure-color;
 }
 
 @keyframes current-theme-animation {

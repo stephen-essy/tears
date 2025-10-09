@@ -1,6 +1,7 @@
 import { AuthStorage } from "./authentication.js";
 const user = AuthStorage.get();
-const logOutButton=document.getElementById("sign-out");
+const logOutButton = document.getElementById("sign-out");
+const queenLeaves = document.getElementById("sign-out-button");
 $(document).ready(() => {
   let isDark = true;
   let theme = $(".dark");
@@ -34,6 +35,7 @@ export function alert(message, type) {
     popupMessage.textContent = "";
   }, 3000);
 }
+
 export function updateClock() {
   const clock = document.getElementById("time-display");
   if (!clock) return;
@@ -78,11 +80,87 @@ export function showUserProfile() {
   phone.textContent = user.profile.phoneNumber;
 }
 
-logOutButton.addEventListener("click",()=>{
-  window.location.href="../index.html";
+logOutButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const alertCard = document.getElementById("alert-card");
+  alertCard.style.opacity = "1";
+});
+queenLeaves.addEventListener("click", (event) => {
+  event.preventDefault();
+  const alertCard = document.getElementById("alert-card");
+  const messageCard = document.getElementById("alert-card-message");
+  alertCard.style.opacity = "0";
+  messageCard.innerText = "thanks for your confrimation";
   AuthStorage.clear();
-})
+  setTimeout(() => {
+    window.location.href = "../index.html";
+  }, 2000);
+});
 
+async function createProfile(event) {
+  event.preventDefault();
+
+  let profile = {
+    gender: document.getElementById("gender").value.trim(),
+    phoneNumber: document.getElementById("phoneNumber").value.trim(),
+    university: document.getElementById("current-university").value.trim(),
+    corse: document.getElementById("current-corse").value.trim(),
+  };
+
+  if (
+    !profile.corse ||
+    !profile.gender ||
+    !profile.phoneNumber ||
+    !profile.corse
+  ) {
+    alert("Please Enter all fields", "error");
+    return;
+  }
+
+  try {
+    let request = await fetch("http://localhost:8080/laughter/profile/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(profile),
+    });
+
+    let response = await request.json();
+    if (request.ok) {
+      alert(response.message,'success')
+    } else {
+      alert(response.message,'error')
+    }
+  } catch (error) {
+    alert('Error in processing','error')
+  }
+}
+
+if (user.profile === null) {
+  document.getElementById("update-create").textContent = "create";
+  document.getElementById("profile-trash").style.display = "none";
+  const modal = document.getElementById("profile-modal");
+  const openBtn = document.getElementById("open-profile-modal");
+  const closeBtn = document.querySelector(".close");
+  const submitProfile = document.getElementById("profile-button");
+  openBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+    setTimeout(() => {
+      document.getElementById("profile-info").style.opacity = "0";
+    }, 1000);
+  });
+  openBtn.onclick = () => (modal.style.display = "block");
+  closeBtn.onclick = () => (modal.style.display = "none");
+  window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+
+  submitProfile.addEventListener("click", createProfile);
+}
+console.log(user);
+console.log(user.profile);
 showUserName();
 showUserProfile();
 updateClock();
