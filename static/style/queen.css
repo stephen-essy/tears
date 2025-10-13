@@ -255,6 +255,28 @@ header .nav .aside-right .current-theme {
   background: none;
   animation: current-theme-animation 1s ease-in forwards;
 }
+header .nav .aside-right .navigate-to-home {
+  margin-left: 5pt;
+  background: white;
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .nav .aside-right .navigate-to-home ul {
+  list-style: none;
+}
+header .nav .aside-right .navigate-to-home ul li {
+  text-decoration: none;
+}
+header .nav .aside-right .navigate-to-home ul li a {
+  text-decoration: none;
+  font-family: "poppins";
+  color: black;
+}
 header .nav .aside-right #date-time-display {
   margin-left: 0%;
   color: white;
@@ -288,7 +310,7 @@ main section {
   border-radius: 15px;
   margin-top: 0vh;
   z-index: 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 main .card-parent {
   width: 85%;
@@ -304,18 +326,6 @@ main .card-parent {
 main .card {
   background: #f5f5f5;
   font-family: "poppins";
-}
-main .on-going {
-  background: #c0392b;
-}
-main .upcoming {
-  background: #6a0dad;
-}
-main .completed {
-  background: #e74c3c;
-}
-main .archieved {
-  background: #3b3e3e;
 }
 main .modal {
   display: none;
@@ -338,7 +348,7 @@ main .modal-content {
   justify-content: center;
   align-items: center;
 }
-main .modal-content form {
+main .modal-content .user {
   height: 100%;
   width: 100%;
   background: rgb(17, 24, 39);
@@ -349,18 +359,18 @@ main .modal-content form {
   gap: 5pt;
   border-radius: 6px;
 }
-main .modal-content form div {
+main .modal-content .user div {
   background: #f5f5f5;
   width: 90%;
   height: 40px;
   border-radius: 15px;
 }
-main .modal-content form .profile-input {
+main .modal-content .user .profile-input {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main .modal-content form .profile-input label {
+main .modal-content .user .profile-input label {
   width: 15%;
   background: transparent;
   color: black;
@@ -369,7 +379,7 @@ main .modal-content form .profile-input label {
   align-items: center;
   height: 100%;
 }
-main .modal-content form .profile-input select {
+main .modal-content .user .profile-input select {
   width: 80%;
   height: 100%;
   outline: none;
@@ -377,7 +387,7 @@ main .modal-content form .profile-input select {
   background: transparent;
   font-family: "poppins";
 }
-main .modal-content form .profile-input input {
+main .modal-content .user .profile-input input {
   width: 85%;
   height: 100%;
   outline: none;
@@ -385,10 +395,10 @@ main .modal-content form .profile-input input {
   background: transparent;
   font-family: "poppins";
 }
-main .modal-content form #button-navigation {
+main .modal-content .user #button-navigation {
   background: none;
 }
-main .modal-content form #button-navigation button {
+main .modal-content .user #button-navigation button {
   position: relative;
   top: 10px;
   display: flex;
@@ -402,6 +412,31 @@ main .modal-content form #button-navigation button {
   border: none;
   font-family: "poppins";
   cursor: pointer;
+}
+main .modal-content .profile {
+  display: none;
+}
+main .modal-content .event {
+  display: flex;
+}
+main .modal-content .event div input {
+  width: 75%;
+}
+main .modal-content .event div button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px 10px 25px;
+  background: #4CAF50;
+  color: #F0EFE7;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-family: "poppins";
+  cursor: pointer;
+}
+main .modal-content .event #profile-button-event {
+  background: transparent;
 }
 main .close {
   float: right;
@@ -419,7 +454,6 @@ main .close {
   left: 50%;
   border-radius: 2px;
   font-family: "poppins";
-  font-size: small;
   transition: opacity 0.3s, transform 0.3s;
   display: flex;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -454,6 +488,18 @@ main .close {
 .alert-card #alert-card-button button i {
   color: #f5f5f5;
   text-align: center;
+}
+
+.card-clock {
+  color: black;
+  position: absolute;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  font-family: "poppins";
+  top: 85%;
+  left: 85%;
 }
 
 .alert-popup {

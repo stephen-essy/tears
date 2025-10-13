@@ -283,6 +283,30 @@ header {
                 animation: current-theme-animation 1s ease-in forwards;
             }
 
+            .navigate-to-home{
+                margin-left: 5pt;
+                background: white;
+                box-sizing: border-box;
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                ul{
+                    list-style: none;
+                    li{
+                        text-decoration: none;
+                        a{
+                            text-decoration: none;
+                            font-family: 'poppins';
+                            color:  black;
+                        }
+                    }
+                }
+            }
+
             #date-time-display {
                 margin-left: 0%;
                 color: white;
@@ -324,7 +348,7 @@ main {
         border-radius: 15px;
         margin-top: 0vh;
         z-index: 0;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .card-parent {
@@ -344,22 +368,7 @@ main {
         font-family: 'poppins';
     }
 
-    .on-going {
-        background: #c0392b;
-    }
-
-    .upcoming {
-        background: #6a0dad;
-    }
-
-    .completed {
-        background: #e74c3c;
-    }
-
-    .archieved {
-        background: #3b3e3e;
-    }
-
+    
     .modal {
         display: none;
         position: fixed;
@@ -382,7 +391,7 @@ main {
         justify-content: center;
         align-items: center;
 
-        form {
+        .user {
             height: 100%;
             width: 100%;
             background: rgba(17, 24, 39, 1);
@@ -443,6 +452,24 @@ main {
 
             }
         }
+        .profile{
+            display: none;
+        }
+        .event{
+            display: flex;
+            div{
+                input{
+                    width: 75%;
+                }
+
+                button{
+                    @include global.button;
+                }
+            }
+            #profile-button-event{
+                background: transparent;
+            }
+        }
     }
 
     .close {
@@ -463,7 +490,6 @@ main {
     left: 50%;
     border-radius: 2px;
     font-family: 'poppins';
-    font-size: small;
     transition: opacity 0.3s, transform 0.3s;
     display: flex;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -502,7 +528,17 @@ main {
     }
 
 }
-
+.card-clock{
+    color: black;
+    position: absolute;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px  rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    font-family: 'poppins';
+    top: 85%;
+    left: 85%;
+}
 .alert-popup {
     position: fixed;
     top: 85%;

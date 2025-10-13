@@ -2,6 +2,7 @@ import { AuthStorage } from "./authentication.js";
 const user = AuthStorage.get();
 const logOutButton = document.getElementById("sign-out");
 const queenLeaves = document.getElementById("sign-out-button");
+const event_submitter=document.getElementById('event-submitter')
 $(document).ready(() => {
   let isDark = true;
   let theme = $(".dark");
@@ -48,7 +49,7 @@ export function updateClock() {
     hour12: true,
   });
 
-  clock.textContent = timeString;
+  clock.textContent=timeString;
 }
 
 export function showDay() {
@@ -90,7 +91,8 @@ queenLeaves.addEventListener("click", (event) => {
   const alertCard = document.getElementById("alert-card");
   const messageCard = document.getElementById("alert-card-message");
   alertCard.style.opacity = "0";
-  messageCard.innerText = "thanks for your confrimation";
+  alert("Thank you for you confrimation",'success');
+  // messageCard.innerText = "thanks for your confrimation";
   AuthStorage.clear();
   setTimeout(() => {
     window.location.href = "../index.html";
@@ -138,6 +140,13 @@ async function createProfile(event) {
   }
 }
 
+async function submitEvent(){
+  let event={
+    
+  }
+}
+  
+
 if (user.profile === null) {
   document.getElementById("update-create").textContent = "create";
   document.getElementById("profile-trash").style.display = "none";
@@ -159,8 +168,12 @@ if (user.profile === null) {
 
   submitProfile.addEventListener("click", createProfile);
 }
-console.log(user);
-console.log(user.profile);
+
+event_submitter.addEventListener("click",(e)=>{
+  e.preventDefault()
+  alert("cooking something",'success');
+  console.log("hello there");
+})
 showUserName();
 showUserProfile();
 updateClock();

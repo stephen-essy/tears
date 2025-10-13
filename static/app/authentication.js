@@ -1,11 +1,11 @@
 import { alert } from "./ui.js";
-const endpoint="127.0.0.1";
+const endpoint = "127.0.0.1";
 export const AuthStorage = {
   save: (data) => {
     const authData = {
       name: data.userName,
       token: data.token,
-      profile: data.profile ?? null
+      profile: data.profile ?? null,
     };
     localStorage.setItem(
       "authenticated-laughter-user",
@@ -61,31 +61,64 @@ document.addEventListener("DOMContentLoaded", () => {
       password: document.getElementById("user-password")?.value.trim(),
     };
 
-    if (!userToBeRegistered.name || !userToBeRegistered.email || !userToBeRegistered.password) {
-      Swal.fire({ title: "Registration Status", text: "Please Fill all field", icon: "warning", timer: 5000 });
+    if (
+      !userToBeRegistered.name ||
+      !userToBeRegistered.email ||
+      !userToBeRegistered.password
+    ) {
+      Swal.fire({
+        title: "Registration Status",
+        text: "Please Fill all field",
+        icon: "warning",
+        timer: 5000,
+      });
       return;
     }
 
     if (!emailRegex.test(userToBeRegistered.email)) {
-      Swal.fire({ title: "Registration Status", text: "Please Enter a valid email", icon: "warning", iconColor: "red", timer: 5000 });
+      Swal.fire({
+        title: "Registration Status",
+        text: "Please Enter a valid email",
+        icon: "warning",
+        iconColor: "red",
+        timer: 5000,
+      });
       return;
     }
     try {
-      let request = await fetch(`http://${endpoint}:8080/laughter/user/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userToBeRegistered),
-      });
+      let request = await fetch(
+        `http://${endpoint}:8080/laughter/user/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userToBeRegistered),
+        }
+      );
 
       let response = await request.json();
       if (request.ok) {
-        Swal.fire({ title: "Registration Status", text: response.message, icon: "success", timer: 5000 });
+        Swal.fire({
+          title: "Registration Status",
+          text: response.message,
+          icon: "success",
+          timer: 5000,
+        });
         registration_form?.reset();
       } else {
-        Swal.fire({ title: "Registration Status", text: response.message, icon: "warning", timer: 5000 });
+        Swal.fire({
+          title: "Registration Status",
+          text: response.message,
+          icon: "warning",
+          timer: 5000,
+        });
       }
     } catch (error) {
-      Swal.fire({ title: "Registration Status", text: error, icon: "error", timer: 5000 });
+      Swal.fire({
+        title: "Registration Status",
+        text: error,
+        icon: "error",
+        timer: 5000,
+      });
     }
   }
 
@@ -98,31 +131,59 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (!user.email || !user.recoveryString) {
-      Swal.fire({ title: "Recovery Password", text: "Please fill all fields", icon: "warning", timer: 5000 });
+      Swal.fire({
+        title: "Recovery Password",
+        text: "Please fill all fields",
+        icon: "warning",
+        timer: 5000,
+      });
       return;
     }
 
     if (!emailRegex.test(user.email)) {
-      Swal.fire({ title: "Recovery Password", text: "Email is invalid", icon: "warning", timer: 5000 });
+      Swal.fire({
+        title: "Recovery Password",
+        text: "Email is invalid",
+        icon: "warning",
+        timer: 5000,
+      });
       return;
     }
 
     try {
-      let request = await fetch(`http://${endpoint}:8080/laughter/user/recover`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
+      let request = await fetch(
+        `http://${endpoint}:8080/laughter/user/recover`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
 
       let response = await request.json();
       if (request.ok) {
-        Swal.fire({ title: "Recovery password", text: response.message, icon: "success", timer: 5000 });
+        Swal.fire({
+          title: "Recovery password",
+          text: response.message,
+          icon: "success",
+          timer: 5000,
+        });
         reset_password_form?.reset();
       } else {
-        Swal.fire({ title: "Recovery Password", text: response.message, icon: "error", timer: 5000 });
+        Swal.fire({
+          title: "Recovery Password",
+          text: response.message,
+          icon: "error",
+          timer: 5000,
+        });
       }
     } catch (error) {
-      Swal.fire({ title: "Recovery Password", text: error, icon: "warning", timer: 5000 });
+      Swal.fire({
+        title: "Recovery Password",
+        text: error,
+        icon: "warning",
+        timer: 5000,
+      });
     }
   }
 
@@ -142,9 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("please Enter a valid Email", "error");
       return;
     }
-
+    let spinner = document.getElementById("login-spinner");
     try {
-      let spinner = document.getElementById("login-spinner");
       if (spinner) spinner.style.display = "flex";
 
       let request = await fetch(`http://${endpoint}:8080/laughter/user/login`, {
@@ -156,7 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let response = await request.json();
       if (request.ok) {
         // console.log(response.token)
-        setTimeout(() => { if (spinner) spinner.style.display = "none"; }, 1000);
+        setTimeout(() => {
+          if (spinner) spinner.style.display = "none";
+        }, 1000);
 
         alert(`${response.message}`, "success");
         // console.log(response);
@@ -183,5 +245,4 @@ document.addEventListener("DOMContentLoaded", () => {
   get_registered_btn?.addEventListener("click", userRegistration);
   get_authenticated_btn?.addEventListener("click", login);
   get_password_btn?.addEventListener("click", requestPassword);
-
 });

@@ -28,6 +28,7 @@ function connectWebSocket() {
       connection_status_display.textContent = "connected";
       stompClient.subscribe("/topic/event-status", (message) => {
         const stats = JSON.parse(message.body).content;
+        console.log("Raw messages"+stats)
       });
       stompClient.subscribe("/user/topic/event-stats", (message) => {
         console.log("Raw message:", message.body);
