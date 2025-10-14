@@ -104,7 +104,7 @@
         </nav>
     </header>
     <main>
-        
+    
         <div id="profile-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -130,7 +130,7 @@
                             <i class="fa-solid fa-graduation-cap"></i>
                         </label>
                         <input type="text" name="university" id="current-university" placeholder="university">
-        
+    
                     </div>
                     <div class="profile-input">
                         <label for="corse">
@@ -144,26 +144,34 @@
                         </button>
                     </div>
                 </form>
-                <form class="user event">
+                <form class="user event" id="event-creation">
                     <div class="profile-input">
-                        <label for="event-name">event</label>
-                        <input type="text" name="event-name" id="event-name" placeholder="event">
+                        <label for="event-name" class="label">
+                            <i class="fa-solid fa-hourglass-start"></i>
+                        </label>
+                        <input type="text" name="event-name" id="event-name" placeholder="event" class="event-input">
                     </div>
                     <div class="profile-input">
-                        <label for="date">date</label>
-                        <input type="date" name="date" id="date">
+                        <label for="date" class="label">
+                            <i class="fa-regular fa-calender"></i>
+                        </label>
+                        <input type="date" name="date" id="date" class="event-input">
                     </div>
                     <div class="profile-input">
-                        <label for="start-time">start</label>
-                        <input type="time" name="start-time" id="start-time">
+                        <label for="start-time" class="label">
+                            <i class="fa-solid fa-hourglass-start"></i>
+                        </label>
+                        <input type="time" name="start-time" id="start-time" class="event-input">
                     </div>
                     <div class="profile-input">
-                        <label for="end-time">end time</label>
-                        <input type="time" name="end-time" id="end-time">
+                        <label for="end-time" class="label">
+                            <i class="fa-solid fa-hourglass-end"></i>
+                        </label>
+                        <input type="time" name="end-time" id="end-time" class="event-input">
                     </div>
                     <div class="profile-input">
-                        <label for="location">location</label>
-                        <input type="text" name="location" id="location" placeholder="location">
+                        <label for="location" class="label">loc</label>
+                        <input type="text" name="location" id="location" placeholder="location" class="event-input">
                     </div>
                     <div class="profile-input" id="profile-button-event">
                         <button id="event-submitter">
@@ -178,12 +186,18 @@
                 <i class="fa-solid fa-check" id="popup-icon-icon"></i>
             </span>
             <span class="alert-popup-message" id="popup-message">
-                hello 
+                hello
             </span>
         </div>
-        <div class="card-clock">
-                
+        <div class="card-clock" id="time-display">
         </div>
+        <div class="event-annoucer">
+            <form action="">
+                <input type="text" placeholder="any plans for today" id="planned-event">
+            </form>
+            <span id="event-submitter-hero">&plus;</span>
+        </div>
+        <h1>Hello world</h1>
     </main>
 
     <script>
