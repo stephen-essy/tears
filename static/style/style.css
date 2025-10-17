@@ -416,7 +416,7 @@ main .top .top-hero .top-hero-card .card-main {
   display: flex;
   opacity: 0;
   transform: translateY(190%);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: all 0.5s;
   z-index: 1000;
 }
 .alert-popup .alert-popup-icon {
@@ -433,7 +433,6 @@ main .top .top-hero .top-hero-card .card-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #4CAF50;
   color: white;
 }
 .alert-popup .alert-popup-message {

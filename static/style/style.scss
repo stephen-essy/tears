@@ -440,7 +440,7 @@ main {
     display: flex;
     opacity: 0;
     transform: translateY(190%);
-    transition: opacity 0.5s, transform 0.5s;
+    transition: all 0.5s;
     z-index: 1000;
     .alert-popup-icon {
         width: 15%;
@@ -452,7 +452,6 @@ main {
             width: 30px;
             border-radius: 50%;
             @include global.center-object;
-            background: global.$alert-primary-success;
             color: white;
         }
     }
