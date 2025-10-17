@@ -32,10 +32,11 @@ export function isTokenExpired(user) {
       setTimeout(() => AuthStorage.clear(), 1000);
       setTimeout(() => {
         window.location.href = "authentication.html";
-      });
+      }, 1000);
     }
     return Date.now() > expiry;
   } catch (error) {
+    alert("Invalid token format", "error");
     console.error("Invalid token format", error);
     return true;
   }
@@ -51,8 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const reset_password_form = document.getElementById("recover-email-panel");
 
   let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-  // --- Registration ---
   async function userRegistration(e) {
     e.preventDefault();
     let userToBeRegistered = {
@@ -66,23 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
       !userToBeRegistered.email ||
       !userToBeRegistered.password
     ) {
-      Swal.fire({
-        title: "Registration Status",
-        text: "Please Fill all field",
-        icon: "warning",
-        timer: 5000,
-      });
+      alert("Please fill all fields", "alert");
       return;
     }
 
     if (!emailRegex.test(userToBeRegistered.email)) {
-      Swal.fire({
-        title: "Registration Status",
-        text: "Please Enter a valid email",
-        icon: "warning",
-        iconColor: "red",
-        timer: 5000,
-      });
+      alert("Invalid Email entered", "error");
       return;
     }
     try {
@@ -97,28 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let response = await request.json();
       if (request.ok) {
-        Swal.fire({
-          title: "Registration Status",
-          text: response.message,
-          icon: "success",
-          timer: 5000,
-        });
+        alert(response.message, "success");
         registration_form?.reset();
       } else {
-        Swal.fire({
-          title: "Registration Status",
-          text: response.message,
-          icon: "warning",
-          timer: 5000,
-        });
+        alert(response.message, "error");
       }
     } catch (error) {
-      Swal.fire({
-        title: "Registration Status",
-        text: error,
-        icon: "error",
-        timer: 5000,
-      });
+      alert("Server connection Error", "error");
     }
   }
 
@@ -131,22 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (!user.email || !user.recoveryString) {
-      Swal.fire({
-        title: "Recovery Password",
-        text: "Please fill all fields",
-        icon: "warning",
-        timer: 5000,
-      });
-      return;
+      alert("please Fill all fields", "alert");
+      return
     }
 
     if (!emailRegex.test(user.email)) {
-      Swal.fire({
-        title: "Recovery Password",
-        text: "Email is invalid",
-        icon: "warning",
-        timer: 5000,
-      });
+      alert("Invalid Email format", "error");
       return;
     }
 
@@ -162,28 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let response = await request.json();
       if (request.ok) {
-        Swal.fire({
-          title: "Recovery password",
-          text: response.message,
-          icon: "success",
-          timer: 5000,
-        });
+        alert(response.message, "success");
         reset_password_form?.reset();
       } else {
-        Swal.fire({
-          title: "Recovery Password",
-          text: response.message,
-          icon: "error",
-          timer: 5000,
-        });
+        alert(response.message, "error");
       }
     } catch (error) {
-      Swal.fire({
-        title: "Recovery Password",
-        text: error,
-        icon: "warning",
-        timer: 5000,
-      });
+      alert("Server connection Error", "error");
     }
   }
 
@@ -196,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (!userToBeAuthenticated.email || !userToBeAuthenticated.password) {
-      alert("please fill all the fields", "error");
+      alert("please fill all the fields", "alert");
       return;
     }
     if (!emailRegex.test(userToBeAuthenticated.email)) {
@@ -215,21 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let response = await request.json();
       if (request.ok) {
-        // console.log(response.token)
+        //websocket  hanshake implementation
         setTimeout(() => {
           if (spinner) spinner.style.display = "none";
         }, 1000);
 
         alert(`${response.message}`, "success");
-        // console.log(response);
-
         setTimeout(() => {
           authenticating_form?.reset();
           AuthStorage.save(response);
         }, 2000);
 
         setTimeout(() => {
-          window.location.href = "hero.html";
+          window.location.href = "queen.html";
         }, 3000);
       } else {
         if (spinner) spinner.style.display = "none";
@@ -237,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       if (spinner) spinner.style.display = "none";
-      alert("Error in processing", "error");
+      alert("Server connection error", "server_error");
     }
   }
 
