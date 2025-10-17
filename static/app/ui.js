@@ -4,7 +4,7 @@ const logOutButton = document.getElementById("sign-out");
 const queenLeaves = document.getElementById("sign-out-button");
 const event_submitter = document.getElementById("event-submitter");
 const endpoint = "127.0.0.1";
-const submitter_hero=document.getElementById('event-submitter-hero');
+const submitter_hero = document.getElementById("event-submitter-hero");
 $(document).ready(() => {
   let isDark = true;
   let theme = $(".dark");
@@ -24,18 +24,43 @@ export function alert(message, type) {
   const popupMessage = document.getElementById("popup-message");
   const popupIcon = document.getElementById("popup-icon");
   const icon = document.getElementById("popup-icon-icon");
+  if (!popup || !popupIcon || !popupMessage || !icon) return;
+  popup.className = "alert-popup";
+  icon.className = "fa-solid";
+  icon.style.background = "";
+  const config = {
+    error: {
+      icon: "fa-xmark",
+      color: "#f44336"
+    },
+    success: {
+      icon: "fa-check", 
+      color: "#4CAF50"
+    },
+    alert: {
+      icon: "fa-exclamation",
+      color: "#ff5f1f"
+    },
+    server_error:{
+      icon:"fa-server",
+      color:"#f44336"
+    }
+  };
 
-  if (!popup || !popupIcon || !popupMessage) return;
-  if (type === "error") {
-    icon.classList.remove("fa-check");
-    icon.classList.add("fa-xmark");
-    icon.style.background = "#f44336";
+  const alertConfig = config[type];
+  if (alertConfig) {
+    icon.classList.add(alertConfig.icon);
+    icon.style.background = alertConfig.color;
   }
+
   popupMessage.innerText = message;
-  popup.className = `alert-popup alert-${type} show`;
+  popup.classList.add(`alert-${type}`, "show");
+  
   setTimeout(() => {
     popup.classList.remove("show");
-    popupMessage.textContent = "";
+    setTimeout(() => {
+      popupMessage.textContent = "";
+    }, 300);
   }, 3000);
 }
 
@@ -92,8 +117,7 @@ queenLeaves.addEventListener("click", (event) => {
   const alertCard = document.getElementById("alert-card");
   const messageCard = document.getElementById("alert-card-message");
   alertCard.style.opacity = "0";
-  alert("Thank you for you confrimation", "success");
-  // messageCard.innerText = "thanks for your confrimation";
+  alert("leaving..", "success");
   AuthStorage.clear();
   setTimeout(() => {
     window.location.href = "../index.html";
@@ -140,7 +164,7 @@ export async function createProfile(event) {
       alert(response.message, "error");
     }
   } catch (error) {
-    alert("Error in processing", "error");
+    alert("Server Connection error", "server_error");
   }
 }
 
@@ -225,7 +249,7 @@ submitter_hero.addEventListener("click", (event) => {
   profile_modal.style.display = "none";
   event_modal.style.display = "flex";
   document.getElementById("event-name").value = event_planned;
-  event_planned.value='';
+  event_planned.value = "";
 });
 showUserName();
 updateClock();
