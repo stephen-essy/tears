@@ -31,20 +31,20 @@ export function alert(message, type) {
   const config = {
     error: {
       icon: "fa-xmark",
-      color: "#f44336"
+      color: "#f44336",
     },
     success: {
-      icon: "fa-check", 
-      color: "#4CAF50"
+      icon: "fa-check",
+      color: "#4CAF50",
     },
     alert: {
       icon: "fa-exclamation",
-      color: "#ff5f1f"
+      color: "#ff5f1f",
     },
-    server_error:{
-      icon:"fa-server",
-      color:"#f44336"
-    }
+    server_error: {
+      icon: "fa-server",
+      color: "#f44336",
+    },
   };
 
   const alertConfig = config[type];
@@ -55,7 +55,7 @@ export function alert(message, type) {
 
   popupMessage.innerText = message;
   popup.classList.add(`alert-${type}`, "show");
-  
+
   setTimeout(() => {
     popup.classList.remove("show");
     setTimeout(() => {
@@ -215,10 +215,10 @@ async function submitEvent(e) {
   }
 }
 
+ const modal = document.getElementById("profile-modal");
 if (user.profile === null) {
   document.getElementById("update-create").textContent = "create";
   document.getElementById("profile-trash").style.display = "none";
-  const modal = document.getElementById("profile-modal");
   const openBtn = document.getElementById("open-profile-modal");
   const closeBtn = document.querySelector(".close");
   const submitProfile = document.getElementById("profile-button");
@@ -235,6 +235,10 @@ if (user.profile === null) {
   };
 
   submitProfile.addEventListener("click", createProfile);
+}else{
+  window.onclick=(e)=>{
+    if(e.target=== modal) modal.style.display="none";
+  }
 }
 
 event_submitter.addEventListener("click", submitEvent);
@@ -250,6 +254,10 @@ submitter_hero.addEventListener("click", (event) => {
   event_modal.style.display = "flex";
   document.getElementById("event-name").value = event_planned;
   event_planned.value = "";
+  window.onclick=(e)=> {
+    if (e.target === modal) modal.style.display = "none";
+  }
+  
 });
 showUserName();
 updateClock();
